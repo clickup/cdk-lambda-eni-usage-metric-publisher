@@ -1,5 +1,5 @@
 {
-  "name": "@time-loop/cdk-custom-metrics-monitor",
+  "name": "@time-loop/cdk-lambda-eni-usage-metric-publisher",
   "repository": {
     "type": "git",
     "url": "https://github.com/time-loop/cdk-lambda-eni-usage-metric-publisher.git"

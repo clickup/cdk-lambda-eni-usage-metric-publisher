@@ -158,10 +158,10 @@ jobs:
         with:
           datadog_api_key: ${{ secrets.DD_PROJEN_RELEASE_API_KEY }}
           datadog_us: true
-          event_title: Released @time-loop/cdk-custom-metrics-monitor version ${{ steps.event_metadata.outputs.release_tag }}
-          event_text: Released @time-loop/cdk-custom-metrics-monitor version ${{ steps.event_metadata.outputs.release_tag }}
+          event_title: Released @time-loop/cdk-lambda-eni-usage-metric-publisher version ${{ steps.event_metadata.outputs.release_tag }}
+          event_text: Released @time-loop/cdk-lambda-eni-usage-metric-publisher version ${{ steps.event_metadata.outputs.release_tag }}
           event_priority: normal
-          event_tags: "['project:@time-loop/cdk-custom-metrics-monitor','release:true','version:${{ steps.event_metadata.outputs.release_tag }}','actor:${{ github.actor }}']"
+          event_tags: "['project:@time-loop/cdk-lambda-eni-usage-metric-publisher','release:true','version:${{ steps.event_metadata.outputs.release_tag }}','actor:${{ github.actor }}']"
   send_release_event_to_slack:
     name: Send Release Alert to Slack
     needs: release

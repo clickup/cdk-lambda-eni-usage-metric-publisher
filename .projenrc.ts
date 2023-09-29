@@ -6,7 +6,7 @@ const project = new clickupCdk.ClickUpCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   devDeps: ['@time-loop/clickup-projen'],
   jsiiVersion: '~5.0.0',
-  name: 'cdk-custom-metrics-monitor',
+  name: 'cdk-lambda-eni-usage-metric-publisher',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/time-loop/cdk-lambda-eni-usage-metric-publisher.git',
 
