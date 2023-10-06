@@ -35,6 +35,7 @@ jspm_packages/
 .idea
 .yalc
 yalc.lock
+.vscode/**
 !/.projenrc.js
 /test-reports/
 junit.xml

@@ -35,12 +35,14 @@
     "organization": true
   },
   "devDependencies": {
+    "@aws-cdk/integ-tests-alpha": "^2.99.1-alpha.0",
     "@time-loop/clickup-projen": "^0.0.181",
     "@types/jest": "^29.5.5",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "aws-cdk-lib": "2.1.0",
+    "aws-cdk-lib": "2.99.0",
+    "aws-sdk-mock": "^5.8.0",
     "constructs": "10.0.5",
     "esbuild": "^0.19.4",
     "eslint": "^8",
@@ -57,18 +59,26 @@
     "jsii-pacmak": "^1.89.0",
     "jsii-release": "^0.2.737",
     "jsii-rosetta": "~5.0.0",
+    "multi-convention-namer": "0.1.15",
     "npm-check-updates": "^16",
     "prettier": "^3.0.3",
-    "projen": "^0.73.36",
+    "projen": "^0.73.41",
     "standard-version": "^9",
     "ts-jest": "^29.1.1",
     "ts-node": "^10",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.1.0",
-    "constructs": "^10.0.5"
+    "aws-cdk-lib": "^2.99.0",
+    "constructs": "^10.0.5",
+    "multi-convention-namer": "^0.1.15"
   },
+  "dependencies": {
+    "aws-sdk": "^2.1468.0"
+  },
+  "bundledDependencies": [
+    "aws-sdk"
+  ],
   "keywords": [
     "cdk"
   ],
