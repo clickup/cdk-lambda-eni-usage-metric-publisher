@@ -58,6 +58,15 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+test/.tmp
+test/monitor.integ.snapshot/asset.*
+test/monitor.integ.snapshot/**/asset.*
+test/monitor.integ.snapshot/cdk.out
+test/monitor.integ.snapshot/**/cdk.out
+test/monitor.integ.snapshot/manifest.json
+test/monitor.integ.snapshot/**/manifest.json
+test/monitor.integ.snapshot/tree.json
+test/monitor.integ.snapshot/**/tree.json
 !/codecov.yml
 !/.nvmrc
 !/.github/workflows/renovate.yml
