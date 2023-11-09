@@ -20,7 +20,7 @@ export class BaselineStack extends Stack {
   }
 }
 
-export class HelperStack extends Stack {
+export class AssertionStack extends Stack {
   constructor(scope: Construct, props: StackProps) {
     const id = new Namer(['helper', 'monitor', 'baseline']);
     super(scope, id.pascal, props);
@@ -53,7 +53,7 @@ const stack = new BaselineStack(app, {
     region: IntegTestResources.AWS_REGION,
   },
 });
-const helperStack = new HelperStack(app, {
+const assertionStack = new AssertionStack(app, {
   env: {
     account: IntegTestResources.AWS_ACCOUNT,
     region: IntegTestResources.AWS_REGION,
@@ -72,9 +72,11 @@ const integ = new IntegTest(app, 'integ', {
   },
 });
 
-integ.node.addDependency(stack, helperStack);
+integ.node.addDependency(assertionStack, stack);
 const lambdaFunctionTest = integ.assertions.invokeFunction({
   functionName: 'GetEniIntegRunnerFunction',
 });
 lambdaFunctionTest.expect(ExpectedResult.objectLike({ StatusCode: 200 }));
+lambdaFunctionTest.assertAtPath('Payload.body.message', ExpectedResult.stringLikeRegexp('Metrics found'));
+
 app.synth();

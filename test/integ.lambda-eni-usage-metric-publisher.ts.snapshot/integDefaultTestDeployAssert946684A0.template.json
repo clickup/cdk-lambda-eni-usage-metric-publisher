@@ -11,12 +11,16 @@
     },
     "service": "Lambda",
     "api": "invoke",
-    "expected": "{\"$ObjectLike\":{\"StatusCode\":200}}",
+    "expected": "{\"$StringLike\":\"Metrics found\"}",
+    "actualPath": "Payload.body.message",
     "parameters": {
      "FunctionName": "\"GetEniIntegRunnerFunction\""
     },
-    "flattenResponse": "false",
-    "salt": "1699482394049"
+    "flattenResponse": "true",
+    "outputPaths": [
+     "Payload.body.message"
+    ],
+    "salt": "1699547188057"
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete"

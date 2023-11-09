@@ -48,16 +48,18 @@ exports.handler = async () => {
       },
     ],
   };
-  console.log(params);
   const command = new GetMetricDataCommand(params);
   try {
     const data = await client.send(command);
     console.log('Data: ', data);
-    const numMetrics = data.MetricDataResults?.length ?? 0;
-    return {
-      statusCode: 200,
-      body: { numberOfMetrics: numMetrics },
-    };
+    const numMetrics = data.MetricDataResults?.[0]?.Timestamps?.length ?? 0;
+    if (numMetrics > 0) {
+      return {
+        statusCode: 200,
+        body: { message: 'Metrics found' },
+      };
+    }
+    throw new Error('No metrics found');
   } catch (error) {
     return {
       statusCode: 500,
