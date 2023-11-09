@@ -2,7 +2,7 @@ import { clickupCdk } from '@time-loop/clickup-projen';
 const project = new clickupCdk.ClickUpCdkConstructLibrary({
   author: 'jose-clickup',
   authorAddress: 'jamoroso@clickup.com',
-  cdkVersion: '2.100.0',
+  cdkVersion: '2.105.0',
   defaultReleaseBranch: 'main',
   devDeps: ['@time-loop/clickup-projen', '@aws-cdk/integ-tests-alpha', 'aws-sdk-mock', '@aws-sdk/client-cloudwatch'],
   jsiiVersion: '~5.0.0',
