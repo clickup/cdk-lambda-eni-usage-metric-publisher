@@ -158,78 +158,6 @@
         }
       ]
     },
-    "integ:monitor:assert": {
-      "name": "integ:monitor:assert",
-      "description": "assert the snapshot of integration test 'monitor'",
-      "steps": [
-        {
-          "exec": "[ -d \"test/monitor.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'monitor'. Run 'projen integ:monitor:deploy' to capture.\" && exit 1)"
-        },
-        {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/monitor.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/monitor.integ/assert.cdk.out > /dev/null"
-        },
-        {
-          "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/monitor.integ.snapshot/ test/.tmp/monitor.integ/assert.cdk.out/"
-        }
-      ]
-    },
-    "integ:monitor:deploy": {
-      "name": "integ:monitor:deploy",
-      "description": "deploy integration test 'monitor' and capture snapshot",
-      "steps": [
-        {
-          "exec": "rm -fr test/.tmp/monitor.integ/deploy.cdk.out"
-        },
-        {
-          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/monitor.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/monitor.integ/deploy.cdk.out"
-        },
-        {
-          "exec": "rm -fr test/monitor.integ.snapshot"
-        },
-        {
-          "exec": "mv test/.tmp/monitor.integ/deploy.cdk.out test/monitor.integ.snapshot"
-        },
-        {
-          "spawn": "integ:monitor:destroy"
-        }
-      ]
-    },
-    "integ:monitor:destroy": {
-      "name": "integ:monitor:destroy",
-      "description": "destroy integration test 'monitor'",
-      "steps": [
-        {
-          "exec": "cdk destroy --app test/monitor.integ.snapshot '**' --no-version-reporting"
-        }
-      ]
-    },
-    "integ:monitor:snapshot": {
-      "name": "integ:monitor:snapshot",
-      "description": "update snapshot for integration test \"monitor\"",
-      "steps": [
-        {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/monitor.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/monitor.integ.snapshot > /dev/null"
-        }
-      ]
-    },
-    "integ:monitor:watch": {
-      "name": "integ:monitor:watch",
-      "description": "watch integration test 'monitor' (without updating snapshots)",
-      "steps": [
-        {
-          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/monitor.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/monitor.integ/deploy.cdk.out"
-        }
-      ]
-    },
-    "integ:snapshot-all": {
-      "name": "integ:snapshot-all",
-      "description": "update snapshot for all integration tests",
-      "steps": [
-        {
-          "spawn": "integ:monitor:snapshot"
-        }
-      ]
-    },
     "integ:update": {
       "name": "integ:update",
       "description": "Run and update integration snapshot tests",
@@ -320,9 +248,6 @@
           "spawn": "eslint"
         },
         {
-          "spawn": "integ:monitor:assert"
-        },
-        {
           "spawn": "integ"
         }
       ]
@@ -390,13 +315,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-cdk/integ-tests-alpha,@aws-sdk/client-cloudwatch,@time-loop/clickup-projen,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-cdk,aws-sdk-mock,esbuild,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-release,multi-convention-namer,npm-check-updates,prettier,projen,standard-version,ts-jest,ts-node,typescript,aws-sdk,aws-cdk-lib,constructs"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-cdk/integ-tests-alpha,@aws-sdk/client-cloudwatch,@time-loop/clickup-projen,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-sdk-mock,esbuild,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-release,multi-convention-namer,npm-check-updates,prettier,projen,standard-version,ts-jest,ts-node,typescript,aws-sdk,aws-cdk-lib,constructs"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-cdk/integ-tests-alpha @aws-sdk/client-cloudwatch @time-loop/clickup-projen @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-sdk-mock esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-release multi-convention-namer npm-check-updates prettier projen standard-version ts-jest ts-node typescript aws-sdk aws-cdk-lib constructs"
+          "exec": "yarn upgrade @aws-cdk/integ-tests-alpha @aws-sdk/client-cloudwatch @time-loop/clickup-projen @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-mock esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-release multi-convention-namer npm-check-updates prettier projen standard-version ts-jest ts-node typescript aws-sdk aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"

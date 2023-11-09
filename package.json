@@ -15,12 +15,6 @@
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
     "integ": "npx projen integ",
-    "integ:monitor:assert": "npx projen integ:monitor:assert",
-    "integ:monitor:deploy": "npx projen integ:monitor:deploy",
-    "integ:monitor:destroy": "npx projen integ:monitor:destroy",
-    "integ:monitor:snapshot": "npx projen integ:monitor:snapshot",
-    "integ:monitor:watch": "npx projen integ:monitor:watch",
-    "integ:snapshot-all": "npx projen integ:snapshot-all",
     "integ:update": "npx projen integ:update",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
@@ -43,16 +37,15 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/integ-runner": "^2.105.0-alpha.0",
-    "@aws-cdk/integ-tests-alpha": "^2.105.0-alpha.0",
+    "@aws-cdk/integ-runner": "latest",
+    "@aws-cdk/integ-tests-alpha": "latest",
     "@aws-sdk/client-cloudwatch": "^3.427.0",
     "@time-loop/clickup-projen": "^0.0.181",
     "@types/jest": "^29.5.5",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "aws-cdk": "^2",
-    "aws-cdk-lib": "2.104.0",
+    "aws-cdk-lib": "2.105.0",
     "aws-sdk-mock": "^5.8.0",
     "constructs": "10.0.5",
     "esbuild": "^0.19.4",
@@ -80,7 +73,7 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.104.0",
+    "aws-cdk-lib": "^2.105.0",
     "constructs": "^10.0.5",
     "multi-convention-namer": "^0.1.15"
   },
