@@ -1,3 +1,8 @@
+/**
+ * Retrieves ENI usage metrics from CloudWatch for the last 5 minutes.
+ * The AWS Lambda resource is managed from test/integ.lambda-eni-usage-metric-publisher.ts
+ * @returns {Promise<{ statusCode: number, body: { message?: string, error?: string } }>} Returns a promise that resolves to an object containing the status code and a message or error.
+ */
 import { CloudWatchClient, GetMetricDataCommand, GetMetricDataCommandInput } from '@aws-sdk/client-cloudwatch';
 import { IntegTestResources } from './integ-tests-types';
 

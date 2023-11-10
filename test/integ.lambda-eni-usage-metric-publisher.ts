@@ -5,7 +5,7 @@ import { Construct } from 'constructs';
 import { Namer } from 'multi-convention-namer';
 import { IntegTestResources } from './utils/integ-tests-types';
 import { LambdaEniUsageMetricPublisher } from '../src';
-
+// The BaselineStack creates an instance of LambdaEniUsageMetricPublisher
 export class BaselineStack extends Stack {
   readonly lambdaFunction: LambdaEniUsageMetricPublisher;
 
@@ -20,11 +20,12 @@ export class BaselineStack extends Stack {
   }
 }
 
+// The AssertionStack creates AWS Lambda helpers to run the assertions
 export class AssertionStack extends Stack {
   constructor(scope: Construct, props: StackProps) {
     const id = new Namer(['helper', 'monitor', 'baseline']);
     super(scope, id.pascal, props);
-
+    // The Lambda DummyFunction cover the scenarios where no Lambda functions are deployed in a VPC.
     new aws_lambda_nodejs.NodejsFunction(this, 'DummyFunction', {
       vpc: aws_ec2.Vpc.fromLookup(this, 'ImportVPC', {
         vpcId: IntegTestResources.VPC_ID,
@@ -32,7 +33,7 @@ export class AssertionStack extends Stack {
       entry: join(__dirname, 'utils/hello-world.ts'),
       allowPublicSubnet: true,
     });
-
+    // The Lambda GetEniIntegRunnerFunction is used to run the assertions as the current awsApiCall presents an issue with the AWS SDK and timestamps parsing.
     new aws_lambda_nodejs.NodejsFunction(this, 'GetEniIntegRunnerFunction', {
       functionName: 'GetEniIntegRunnerFunction',
       entry: join(__dirname, 'utils/get-eni-usage-metrics.ts'),

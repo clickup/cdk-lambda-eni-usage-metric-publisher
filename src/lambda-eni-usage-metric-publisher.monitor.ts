@@ -1,11 +1,18 @@
+/**
+ * The Lambda function resource is managed from lambda-eni-usage-metric-publisher.ts
+ */
 import * as AWS from 'aws-sdk';
-
 export interface Result {
   region: string;
   vpcId: string;
   count: number;
 }
 
+/**
+ * Monitor the usage of ENIs by Lambda functions in multiple regions and publish the metric data to CloudWatch.
+ * @returns An array of objects containing the region, VPC ID, and count of ENIs used by Lambda functions in that VPC.
+ * @throws An error if the REGION_LIST or CW_NAMESPACE environment variables are not set, or if there is an error publishing the metric data to CloudWatch.
+ */
 export const monitor = async () => {
   try {
     const regionList = process.env.REGION_LIST;
