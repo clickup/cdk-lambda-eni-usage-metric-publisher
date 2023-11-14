@@ -3,6 +3,7 @@ import { JsonPatch } from 'projen';
 
 const repoName = 'cdk-lambda-eni-usage-metric-publisher';
 const project = new clickupCdk.ClickUpCdkConstructLibrary({
+  packageName: '@clickup/cdk-lambda-eni-usage-metric-publisher',
   author: 'jose-clickup',
   authorAddress: 'jamoroso@clickup.com',
   cdkVersion: '2.105.0',
@@ -11,7 +12,7 @@ const project = new clickupCdk.ClickUpCdkConstructLibrary({
   jsiiVersion: '~5.0.0',
   name: 'cdk-lambda-eni-usage-metric-publisher',
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/time-loop/cdk-lambda-eni-usage-metric-publisher.git',
+  repositoryUrl: 'https://github.com/clickup/cdk-lambda-eni-usage-metric-publisher.git',
   gitignore: ['.vscode/**'],
   bundledDeps: ['aws-sdk'],
   peerDeps: ['multi-convention-namer'],
