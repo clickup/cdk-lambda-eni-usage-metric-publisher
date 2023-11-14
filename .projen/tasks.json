@@ -148,6 +148,26 @@
         }
       ]
     },
+    "integ": {
+      "name": "integ",
+      "description": "Run integration snapshot tests",
+      "steps": [
+        {
+          "exec": "integ-runner $@ --language typescript",
+          "receiveArgs": true
+        }
+      ]
+    },
+    "integ:update": {
+      "name": "integ:update",
+      "description": "Run and update integration snapshot tests",
+      "steps": [
+        {
+          "exec": "integ-runner $@ --language typescript --update-on-failed",
+          "receiveArgs": true
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",
@@ -226,6 +246,9 @@
         },
         {
           "spawn": "eslint"
+        },
+        {
+          "spawn": "integ"
         }
       ]
     },
@@ -292,13 +315,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-cdk/integ-tests-alpha,@time-loop/clickup-projen,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-sdk-mock,esbuild,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-release,multi-convention-namer,npm-check-updates,prettier,projen,standard-version,ts-jest,ts-node,typescript,aws-sdk,aws-cdk-lib,constructs"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-cdk/integ-tests-alpha,@aws-sdk/client-cloudwatch,@time-loop/clickup-projen,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-sdk-mock,esbuild,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-release,multi-convention-namer,npm-check-updates,prettier,projen,standard-version,ts-jest,ts-node,typescript,aws-sdk,aws-cdk-lib,constructs"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-cdk/integ-tests-alpha @time-loop/clickup-projen @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-mock esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-release multi-convention-namer npm-check-updates prettier projen standard-version ts-jest ts-node typescript aws-sdk aws-cdk-lib constructs"
+          "exec": "yarn upgrade @aws-cdk/integ-tests-alpha @aws-sdk/client-cloudwatch @time-loop/clickup-projen @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-mock esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-release multi-convention-namer npm-check-updates prettier projen standard-version ts-jest ts-node typescript aws-sdk aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"

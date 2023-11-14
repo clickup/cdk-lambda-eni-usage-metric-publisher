@@ -14,6 +14,8 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "integ": "npx projen integ",
+    "integ:update": "npx projen integ:update",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
@@ -35,13 +37,15 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/integ-tests-alpha": "^2.99.1-alpha.0",
+    "@aws-cdk/integ-runner": "latest",
+    "@aws-cdk/integ-tests-alpha": "latest",
+    "@aws-sdk/client-cloudwatch": "^3.427.0",
     "@time-loop/clickup-projen": "^0.0.181",
     "@types/jest": "^29.5.6",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "aws-cdk-lib": "2.99.0",
+    "aws-cdk-lib": "2.105.0",
     "aws-sdk-mock": "^5.8.0",
     "constructs": "10.0.5",
     "esbuild": "^0.19.5",
@@ -62,14 +66,14 @@
     "multi-convention-namer": "0.1.15",
     "npm-check-updates": "^16",
     "prettier": "^3.0.3",
-    "projen": "^0.73.41",
+    "projen": "^0.73.42",
     "standard-version": "^9",
     "ts-jest": "^29.1.1",
     "ts-node": "^10",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.99.0",
+    "aws-cdk-lib": "^2.105.0",
     "constructs": "^10.0.5",
     "multi-convention-namer": "^0.1.15"
   },
