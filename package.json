@@ -1,8 +1,8 @@
 {
-  "name": "@time-loop/cdk-lambda-eni-usage-metric-publisher",
+  "name": "@clickup/cdk-lambda-eni-usage-metric-publisher",
   "repository": {
     "type": "git",
-    "url": "https://github.com/time-loop/cdk-lambda-eni-usage-metric-publisher.git"
+    "url": "https://github.com/clickup/cdk-lambda-eni-usage-metric-publisher.git"
   },
   "scripts": {
     "build": "npx projen build",
